@@ -1,0 +1,14 @@
+package component
+
+templ Banner() {
+    <header class='pt-6 px-6 flex flex-col justify-between'>
+        <img src='/static/svg/logo.svg' class='h-24 w-24' />
+    </header>
+}
+
+templ TextAndTitle(title string, text string) {
+    <div>
+        <h1 class='text-lg font-bold'>{title}</h1>
+        <p class='text-sm'>{text}</p>
+    </div>
+}
