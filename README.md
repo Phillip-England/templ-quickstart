@@ -1,4 +1,4 @@
-# SnakeScape
+# templ-quickstart
 
 ## Introduction
 
