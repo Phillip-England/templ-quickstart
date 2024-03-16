@@ -76,7 +76,7 @@ To configure air, you can modify .air.toml in the root of the project. (it will 
 
 This project has a few core concepts to help you get going, let's start with ./main.go
 
-## Main - ./main.go
+### Main - ./main.go
 
 This is our applications entry-point and does a few things:
 
@@ -112,7 +112,7 @@ if err != nil {
     fmt.Println(err)
 }
 ```
-## Middleware - ./internal/middleware/middleware.go
+### Middleware - ./internal/middleware/middleware.go
 
 Custom middleware can be implemented with ease in this project. Lets first start with our middleware chain.
 
@@ -147,7 +147,7 @@ func Chain(w http.ResponseWriter, r *http.Request, handler CustomHandler, middle
 
 You'll notice we are using a few custom types here. In short, this function works by initializing a custom context, iterating through our middleware, and then finally calling our handler and logger. The custom context is passed through each middleware, enabling you to store and access context values throughout the chain. If a middleware returns an error, the chain will stop executing. This enables you to allow your middleware to write responses early and avoid calling the handler in case of an error.
 
-## Creating Custom Middleware
+### Creating Custom Middleware
 
 Let's say you want to create custom middleware. Here is how to do so:
 
@@ -189,7 +189,7 @@ mux.HandleFunc("GET /", func(w http.ResponseWriter, r *http.Request) {
 
 That's it! Easily create custom middleware without the need to deeply nest your routes.
 
-## Views - ./internal/view/view.go
+### Views - ./internal/view/view.go
 
 Our views are straightforward and rely on templ to generate html content. Here is an example of the Home view found at ./internal/view/view.go
 
@@ -223,7 +223,7 @@ template.Base(
 ).Render(ctx, w)
 ```
 
-## Templates - ./internal/template/template.templ
+### Templates - ./internal/template/template.templ
 
 Our templates are included in this file. Here is the Base template discussed in the previous section. This function simply takes in a title and an array of templ.Component. For more info on templ syntax, please visit [Templ.guide](templ.guide)
 
@@ -256,7 +256,7 @@ Also note, htmx and your tailwind output are included in the head of this templa
 <link rel="stylesheet" href="/static/css/output.css"></link>
 ```
 
-## Components - ./internal/component/component.templ
+### Components - ./internal/component/component.templ
 
 Comonents are very similar to templates. Here is an example of the TextAndTitle component used in ./internal/view/view.go
 
