@@ -166,8 +166,7 @@ type CustomContext struct {
 ```go
 // this middleware will be placed early in the chain
 func EarlyMiddleware(ctx *CustomContext, w http.ResponseWriter, r *http.Request) error {
-    // set your new context value
-	ctx.NewContextValue = "I was set early in the chain"
+	ctx.NewContextValue = "I was set early in the chain" // set your new context value
 	return nil
 }
 
@@ -195,8 +194,7 @@ Our views are straightforward and rely on templ to generate html content. Here i
 
 ```go
 func Home(ctx *middleware.CustomContext, w http.ResponseWriter, r *http.Request) {
-    // enables us to catch all routes which do not exist and render a 404
-	if r.URL.Path != "/" {
+	if r.URL.Path != "/" { // enables us to catch all non-existing routes and throw a 404
 		http.NotFound(w, r)
 		return
 	
