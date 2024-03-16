@@ -70,7 +70,7 @@ With the [Air Binary](https://github.com/cosmtrek/air) installed and moved somew
 air
 ```
 
-To configure air, you can modify .air.toml in the root of the project.
+To configure air, you can modify .air.toml in the root of the project. (it will be auto-generated after the first time you run air in your repo)
 
 ## Project Overview
 
