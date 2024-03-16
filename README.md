@@ -8,7 +8,7 @@ templ-quickstart provides a quick and easy way to scaffold an Go http server. Th
 
 As mentioned above, this project depends on some awesome technologies. Let me start by giving credit where credit is due:
 
-- [Go](https://go.dev/)
+- [Go](https://go.dev/) - Version 1.22.0 or greater required
 - [Templ](https://templ.guide/)
 - [Air](https://github.com/cosmtrek/air)
 - [Htmx](https://htmx.org/)
