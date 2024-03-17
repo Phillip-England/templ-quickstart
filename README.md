@@ -103,7 +103,7 @@ Please take note of this line here as it will be important in the next section w
 middleware.Chain(w, r, view.Home)
 ```
 
-3. We server our application on the PORT defined at ./.env
+3. We serve our application on the PORT defined at ./.env
 
 ```go
 fmt.Println(fmt.Sprintf("server is running on port %s", os.Getenv("PORT")))
@@ -155,8 +155,8 @@ Let's say you want to create custom middleware. Here is how to do so:
 
 ```go
 type CustomContext struct {
-	context.Context
-	StartTime time.Time
+    context.Context
+    StartTime time.Time
     NewContextValue string
 }
 ```
