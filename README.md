@@ -59,7 +59,7 @@ templ generate --watch
 With the [Tailwind Binary](https://tailwindcss.com/blog/standalone-cli) installed and moved somewhere on your PATH, run the following to generate your CSS output for your tailwind classes (remove --watch to simply build and not hot reload)
 
 ```bash
-tailwindcss -i ./statis/css/input.css -o ./static/css/output.css --watch
+tailwindcss -i ./static/css/input.css -o ./static/css/output.css --watch
 ```
 
 ### Serving with Air
