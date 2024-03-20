@@ -231,7 +231,7 @@ templ Base(title string) {
 templ Home(title string) {
     @Base(title) {
         @component.TextAndTitle("I'm a Component!", "I am included as a content item in the Base Template!")
-		@component.TextAndTitle("I'm another Component!", "I am also included in the Base Template!")
+	    @component.TextAndTitle("I'm another Component!", "I am also included in the Base Template!")
     }
 }
 ```
