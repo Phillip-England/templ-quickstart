@@ -194,56 +194,45 @@ Our views are straightforward and rely on templ to generate html content. Here i
 
 ```go
 func Home(ctx *middleware.CustomContext, w http.ResponseWriter, r *http.Request) {
-	if r.URL.Path != "/" { // enables us to catch all non-existing routes and throw a 404
+	if r.URL.Path != "/" { // catches 404s, only needed in the '/' route for entire app
 		http.NotFound(w, r)
 		return
 	
 	}
-	template.Base(
-		"Templ Quickstart - Zoom!",
-		[]templ.Component{
-			component.TextAndTitle("I'm a Component!", "I am included as a content item in the Base Template!"),
-			component.TextAndTitle("I'm another Component!", "I am also included in the Base Template!"),
-		},
-	).Render(ctx, w)
+	template.Home("Templ Quickstart").Render(ctx, w)
 }
-```
-
-Let's zoom in on the template.Base. This function is pretty simple. It takes in a title and an array of templ.Component. Take note of the Render func called at the end of the component. This is what actually writes our html bytes to the response writer.
-
-```go
-template.Base(
-    "Templ Quickstart - Zoom!",
-    []templ.Component{
-        component.TextAndTitle("I'm a Component!", "I am included as a content item in the Base Template!"),
-        component.TextAndTitle("I'm another Component!", "I am also included in the Base Template!"),
-    },
-).Render(ctx, w)
 ```
 
 ### Templates - ./internal/template/template.templ
 
 Our templates are included in this file. Here is the Base template discussed in the previous section. This function simply takes in a title and an array of templ.Component. For more info on templ syntax, please visit [Templ.guide](templ.guide)
 
+To put very simple, Base is a 'base-level template' that can take in children. Then, we reuse base in our home template. Please note the sytax for passing children to @Base. Normally you'd expect to pass children as parameters, but with templ, you place children inside brackets.
+
 ```html
-templ Base(title string, content []templ.Component) {
+templ Base(title string) {
     <html>
         <head>
             <meta charset="UTF-8"></meta>
             <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
             <script src="https://unpkg.com/htmx.org@1.9.11"></script>
             <link rel="stylesheet" href="/static/css/output.css"></link>
-            <title>{name}</title>
+            <title>{title}</title>
         </head>
             @component.Banner()
         <body>
             <main class='p-6 grid gap-4'>
-                for _, contentItem := range content {
-                    @contentItem
-                }
+                { children... }
             </main>
         </body>
     </html>
+}
+
+templ Home(title string) {
+    @Base(title) {
+        @component.TextAndTitle("I'm a Component!", "I am included as a content item in the Base Template!")
+		@component.TextAndTitle("I'm another Component!", "I am also included in the Base Template!")
+    }
 }
 ```
 
