@@ -3,7 +3,7 @@ package template
 import "snake-scape/internal/component"
 
 
-templ Base(title string, content []templ.Component) {
+templ Base(title string) {
     <html>
         <head>
             <meta charset="UTF-8"></meta>
@@ -15,10 +15,15 @@ templ Base(title string, content []templ.Component) {
             @component.Banner()
         <body>
             <main class='p-6 grid gap-4'>
-                for _, contentItem := range content {
-                    @contentItem
-                }
+                { children... }
             </main>
         </body>
     </html>
+}
+
+templ Home(title string) {
+    @Base(title) {
+        @component.TextAndTitle("I'm a Component!", "I am included as a content item in the Base Template!")
+		@component.TextAndTitle("I'm another Component!", "I am also included in the Base Template!")
+    }
 }
