@@ -72,6 +72,12 @@ air
 
 To configure air, you can modify .air.toml in the root of the project. (it will be auto-generated after the first time you run air in your repo)
 
+### Running everything with hot-reload
+To run everything with hot reloading, a makefile command starts the above mentioned processes in the background, so `templ`, `tailwindcss` and `go` live-servers can run in a single shell.
+```bash
+make dev
+```
+
 ## Project Overview
 
 This project has a few core concepts to help you get going, let's start with ./main.go
