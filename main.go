@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"net/http"
 	"os"
-	"snake-scape/internal/middleware"
-	"snake-scape/internal/view"
+	"xerus/internal/middleware"
+	"xerus/internal/view"
 
 	"github.com/joho/godotenv"
 )

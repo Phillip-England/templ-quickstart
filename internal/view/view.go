@@ -3,8 +3,8 @@ package view
 import (
 	"net/http"
 	"path/filepath"
-	"snake-scape/internal/middleware"
-	"snake-scape/internal/template"
+	"xerus/internal/middleware"
+	"xerus/internal/template"
 )
 
 func ServeFavicon(w http.ResponseWriter, r *http.Request) {
@@ -23,7 +23,7 @@ func Home(ctx *middleware.CustomContext, w http.ResponseWriter, r *http.Request)
 	if r.URL.Path != "/" {
 		http.NotFound(w, r)
 		return
-	
+
 	}
 	template.Home("Templ Quickstart").Render(ctx, w)
 }
