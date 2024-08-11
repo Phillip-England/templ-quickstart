@@ -20,10 +20,5 @@ func ServeStaticFiles(w http.ResponseWriter, r *http.Request) {
 }
 
 func Home(ctx *middleware.CustomContext, w http.ResponseWriter, r *http.Request) {
-	if r.URL.Path != "/" {
-		http.NotFound(w, r)
-		return
-
-	}
 	template.Home("Templ Quickstart").Render(ctx, w)
 }

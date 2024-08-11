@@ -18,6 +18,10 @@ func main() {
 	mux.HandleFunc("GET /favicon.ico", view.ServeFavicon)
 	mux.HandleFunc("GET /static/", view.ServeStaticFiles)
 	mux.HandleFunc("GET /", func(w http.ResponseWriter, r *http.Request) {
+		if r.URL.Path != "/" {
+			http.NotFound(w, r)
+			return
+		}
 		middleware.Chain(w, r, view.Home)
 	})
 
