@@ -5,6 +5,7 @@ import (
 	"net/http"
 	"os"
 	"xerus/internal/middleware"
+	"xerus/internal/template"
 	"xerus/internal/view"
 
 	"github.com/joho/godotenv"
@@ -22,7 +23,7 @@ func main() {
 			http.NotFound(w, r)
 			return
 		}
-		middleware.Chain(w, r, view.Home)
+		middleware.Chain(w, r, template.Home("Templ Quickstart"))
 	})
 
 	fmt.Printf("server is running on port %s\n", os.Getenv("PORT"))

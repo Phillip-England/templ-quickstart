@@ -5,6 +5,8 @@ import (
 	"fmt"
 	"net/http"
 	"time"
+
+	"github.com/a-h/templ"
 )
 
 type CustomContext struct {
@@ -15,7 +17,7 @@ type CustomContext struct {
 type CustomHandler func(ctx *CustomContext, w http.ResponseWriter, r *http.Request)
 type CustomMiddleware func(ctx *CustomContext, w http.ResponseWriter, r *http.Request) error
 
-func Chain(w http.ResponseWriter, r *http.Request, handler CustomHandler, middleware ...CustomMiddleware) {
+func Chain(w http.ResponseWriter, r *http.Request, template templ.Component, middleware ...CustomMiddleware) {
 	customContext := &CustomContext{
 		Context:   context.Background(),
 		StartTime: time.Now(),
@@ -26,7 +28,7 @@ func Chain(w http.ResponseWriter, r *http.Request, handler CustomHandler, middle
 			return
 		}
 	}
-	handler(customContext, w, r)
+	template.Render(customContext, w)
 	Log(customContext, w, r)
 }
 
