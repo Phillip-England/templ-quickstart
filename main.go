@@ -21,8 +21,7 @@ func main() {
 		middleware.Chain(w, r, view.Home)
 	})
 
-
-	fmt.Println(fmt.Sprintf("server is running on port %s", os.Getenv("PORT")))
+	fmt.Printf("server is running on port %s\n", os.Getenv("PORT"))
 	err := http.ListenAndServe(":"+os.Getenv("PORT"), mux)
 	if err != nil {
 		fmt.Println(err)
