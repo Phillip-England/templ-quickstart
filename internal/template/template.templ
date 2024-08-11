@@ -22,8 +22,9 @@ templ Base(title string) {
 }
 
 
-// @route("GET /")
-// @middleware(ParseForm)
+
+// route!("GET /")
+// middleware!(ParseForm)
 templ Home(title string) {
     @Base(title) {
         @component.TextAndTitle("I'm a Component!", "I am included as a content item in the Base Template!")
